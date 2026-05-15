@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tanish Raheja | Resume - Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a2a, #010105);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .resume-wrapper {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* GRAPHIC STYLE (SCREEN) */
+    .resume-card {
+      background: linear-gradient(145deg, #0f1428, #0a0d1f);
+      border-radius: 32px;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      width: 100%;
+    }
+
+    .resume-header {
+      background: linear-gradient(135deg, rgba(0, 91, 234, 0.25), rgba(0, 198, 251, 0.12));
+      padding: 2rem 2rem;
+      border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    }
+
+    .name-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .name h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .name .tagline {
+      color: #00f2fe;
+      font-weight: 500;
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .role-badge {
+      background: rgba(0, 242, 254, 0.15);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid rgba(0, 242, 254, 0.4);
+    }
+
+    .role-badge p {
+      color: #00f2fe;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #b0bbdf;
+      font-size: 0.75rem;
+    }
+
+    .contact-item i {
+      color: #00f2fe;
+      font-size: 0.85rem;
+    }
+
+    .resume-body {
+      padding: 2rem;
+    }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .resume-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .resume-header, .resume-body {
+        padding: 1.2rem;
+      }
+      .name h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #00f2fe;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-badge {
+      background: rgba(0, 242, 254, 0.1);
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #c4dcff;
+      border: 1px solid rgba(0, 242, 254, 0.2);
+    }
+
+    .edu-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .edu-item h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-item .institute {
+      color: #00f2fe;
+      font-size: 0.75rem;
+      margin: 0.15rem 0;
+    }
+
+    .edu-item .date {
+      color: #7a85a5;
+      font-size: 0.65rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-item .detail {
+      color: #b0bbdf;
+      font-size: 0.7rem;
+      line-height: 1.4;
+    }
+
+    .project-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .project-item h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-item h4 i {
+      color: #00f2fe;
+      font-size: 0.8rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0.25rem 0;
+    }
+
+    .project-tech span {
+      background: rgba(0, 242, 254, 0.08);
+      padding: 0.1rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.6rem;
+      color: #9cb4ff;
+    }
+
+    .project-item p {
+      color: #b0bbdf;
+      font-size: 0.7rem;
+      line-height: 1.4;
+    }
+
+    /* UPDATED ABOUT TEXT - PROFESSIONAL */
+    .about-text {
+      color: #b0bbdf;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      margin-bottom: 0.8rem;
+      text-align: justify;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,242,254,0.3), transparent);
+      margin: 0.8rem 0;
+    }
+
+    .cert-item {
+      margin-bottom: 0.6rem;
+    }
+    .cert-item p {
+      color: #b0bbdf;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cert-item i {
+      color: #00f2fe;
+      font-size: 0.7rem;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      background: linear-gradient(95deg, #00f2fe, #4facfe);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #02020A;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+    }
+
+    .watermark {
+      text-align: center;
+      font-size: 0.55rem;
+      color: #3a4568;
+      margin-top: 1rem;
+    }
+
+    /* PRINT STYLES - BLACK & WHITE, A4 PERFECT */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .button-container, .watermark {
+        display: none;
+      }
+      .resume-card {
+        background: white !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .resume-header {
+        background: white !important;
+        border-bottom: 2px solid #000 !important;
+        padding: 0.5cm !important;
+      }
+      .name h1 {
+        color: black !important;
+        font-size: 22pt !important;
+      }
+      .name .tagline {
+        color: #333 !important;
+      }
+      .role-badge {
+        background: #000 !important;
+        border: none !important;
+      }
+      .role-badge p {
+        color: white !important;
+      }
+      .contact-item {
+        color: #333 !important;
+      }
+      .contact-item i {
+        color: #000 !important;
+      }
+      .section-title {
+        color: #000 !important;
+        border-bottom: 1px solid #ccc !important;
+      }
+      .skill-badge {
+        background: #f0f0f0 !important;
+        border: 1px solid #ccc !important;
+        color: #000 !important;
+      }
+      .edu-item h4, .project-item h4 {
+        color: #000 !important;
+      }
+      .edu-item .institute, .project-item h4 i {
+        color: #000 !important;
+      }
+      .edu-item .date, .edu-item .detail, .project-item p, .about-text, .cert-item p {
+        color: #333 !important;
+      }
+      .project-tech span {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+      }
+      .divider {
+        background: #ccc !important;
+      }
+      .resume-body {
+        padding: 0.5cm !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 1cm;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="resume-wrapper">
+  <div id="resumeCard" class="resume-card">
+    <div class="resume-header">
+      <div class="name-title">
+        <div class="name">
+          <h1>TANISH RAHEJA</h1>
+          <div class="tagline">Data Analyst | Business Intelligence Enthusiast</div>
+        </div>
+        <div class="role-badge">
+          <p>📊 Aspiring Data Analyst</p>
+        </div>
+      </div>
+      <div class="contact-bar">
+        <div class="contact-item"><i class="fas fa-envelope"></i> <span>rahejatanish29@gmail.com</span></div>
+        <div class="contact-item"><i class="fab fa-github"></i> <span>github.com/tanishraheja</span></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i> <span>linkedin.com/in/tanishraheja</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Orai, Jalaun (UP), India</span></div>
+      </div>
+    </div>
+
+    <div class="resume-body">
+      <div class="resume-grid">
+        <!-- LEFT COLUMN -->
+        <div>
+          <!-- ABOUT ME - NEW PROFESSIONAL TEXT -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-user-astronaut"></i> ABOUT ME</div>
+            <div class="about-text">
+              Highly motivated and detail-oriented aspiring Data Analyst with hands-on experience in Python, SQL, Excel, Pandas, and Power BI. Skilled in data cleaning, visualization, dashboard creation, and extracting meaningful insights from complex datasets. Passionate about transforming raw data into impactful business decisions through analytical thinking and storytelling dashboards. Currently pursuing B.Com and continuously building real-world projects in data analytics and business intelligence.
+            </div>
+          </div>
+
+          <!-- TECHNICAL SKILLS -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-code"></i> TECHNICAL SKILLS</div>
+            <div class="skills-list">
+              <span class="skill-badge">Python</span><span class="skill-badge">SQL</span><span class="skill-badge">Pandas</span>
+              <span class="skill-badge">NumPy</span><span class="skill-badge">Power BI</span><span class="skill-badge">Excel</span>
+              <span class="skill-badge">MySQL</span><span class="skill-badge">Data Visualization</span><span class="skill-badge">Dashboard Design</span>
+              <span class="skill-badge">Data Cleaning</span><span class="skill-badge">ETL</span><span class="skill-badge">Storytelling</span>
+            </div>
+          </div>
+
+          <!-- EDUCATION -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-graduation-cap"></i> EDUCATION</div>
+            <div class="edu-item">
+              <h4>Bachelor of Commerce (B.Com)</h4>
+              <div class="institute">Bundelkhand University, Jhansi</div>
+              <div class="date">📅 2024 - 2027 | Pursuing</div>
+              <div class="detail">Specialization in Business Analytics & Data Systems. Coursework: Financial Accounting, Business Statistics, Economics, Data Analysis.</div>
+            </div>
+            <div class="edu-item">
+              <h4>'O' Level Computer Certification</h4>
+              <div class="institute">Info Park Institute of IT & Management, Orai (NIELIT)</div>
+              <div class="date">📅 2024 - 2025 | Completed - Grade A</div>
+              <div class="detail">Modules: IT Tools, Python Programming, Web Design, Data Management.</div>
+            </div>
+          </div>
+
+          <!-- CERTIFICATIONS -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-certificate"></i> CERTIFICATIONS</div>
+            <div class="cert-item"><p><i class="fas fa-check-circle"></i> NIELIT 'O' Level - Grade A</p></div>
+            <div class="cert-item"><p><i class="fas fa-check-circle"></i> Python for Data Science</p></div>
+            <div class="cert-item"><p><i class="fas fa-check-circle"></i> SQL Fundamentals</p></div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div>
+          <!-- PROJECTS -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-chart-line"></i> PROJECTS</div>
+            
+            <div class="project-item">
+              <h4><i class="fas fa-users"></i> Customer Behavior Analysis</h4>
+              <div class="project-tech"><span>Python</span><span>SQL</span><span>Pandas</span><span>Power BI</span></div>
+              <p>Built comprehensive analysis of shopping patterns using Python & Pandas. Created interactive Power BI dashboards revealing key customer segments and purchasing trends.</p>
+            </div>
+            
+            <div class="project-item">
+              <h4><i class="fas fa-tv"></i> Netflix Insights Dashboard</h4>
+              <div class="project-tech"><span>Python</span><span>SQL</span><span>Power BI</span></div>
+              <p>Entertainment analytics dashboard exploring genre popularity, release trends, ratings, and streaming insights from Netflix content data.</p>
+            </div>
+            
+            <div class="project-item">
+              <h4><i class="fas fa-chart-line"></i> E‑Commerce Sales Analysis</h4>
+              <div class="project-tech"><span>SQL</span><span>Excel</span><span>Power BI</span></div>
+              <p>Analyzed sales performance, revenue growth, customer purchases, and product trends using SQL and dynamic dashboards.</p>
+            </div>
+            
+            <div class="project-item">
+              <h4><i class="fas fa-code"></i> CourseKart</h4>
+              <div class="project-tech"><span>HTML</span><span>CSS</span></div>
+              <p>Frontend practice project — responsive course-selling landing page built while mastering HTML/CSS.</p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- EXTRA SKILLS / SOFT SKILLS -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-heart"></i> SOFT SKILLS</div>
+            <div class="skills-list">
+              <span class="skill-badge">Analytical Thinking</span>
+              <span class="skill-badge">Problem Solving</span>
+              <span class="skill-badge">Communication</span>
+              <span class="skill-badge">Team Collaboration</span>
+              <span class="skill-badge">Attention to Detail</span>
+              <span class="skill-badge">Time Management</span>
+            </div>
+          </div>
+
+          <!-- LANGUAGES -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-language"></i> LANGUAGES</div>
+            <div class="skills-list">
+              <span class="skill-badge">Hindi (Native)</span>
+              <span class="skill-badge">English (Professional)</span>
+            </div>
+          </div>
+
+          <!-- INTERESTS -->
+          <div class="section">
+            <div class="section-title"><i class="fas fa-heart"></i> INTERESTS</div>
+            <div class="skills-list">
+              <span class="skill-badge">Data Storytelling</span>
+              <span class="skill-badge">Open Source</span>
+              <span class="skill-badge">Tech Blogging</span>
+              <span class="skill-badge">Chess</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button class="download-btn" id="downloadImageBtn"><i class="fas fa-camera"></i> 📸 Download as Image</button>
+    <button class="download-btn" id="downloadPDFBtn"><i class="fas fa-file-pdf"></i> 📄 Save as PDF</button>
+    <button class="download-btn" id="printBtn"><i class="fas fa-print"></i> 🖨️ Print</button>
+  </div>
+  <div class="watermark">
+    <i class="fas fa-database"></i> Tanish Raheja • Data Analyst Portfolio | Orai, UP
+  </div>
+</div>
+
+<script>
+  const downloadImageBtn = document.getElementById('downloadImageBtn');
+  const downloadPDFBtn = document.getElementById('downloadPDFBtn');
+  const printBtn = document.getElementById('printBtn');
+  const resumeCard = document.getElementById('resumeCard');
+
+  downloadImageBtn.addEventListener('click', async () => {
+    try {
+      downloadImageBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Generating...';
+      downloadImageBtn.disabled = true;
+      
+      const canvas = await html2canvas(resumeCard, {
+        scale: 3,
+        backgroundColor: '#0a0d1f',
+        logging: false,
+        useCORS: true
+      });
+      
+      const link = document.createElement('a');
+      link.download = 'Tanish_Raheja_Resume.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      
+      downloadImageBtn.innerHTML = '<i class="fas fa-camera"></i> 📸 Download as Image';
+      downloadImageBtn.disabled = false;
+    } catch (error) {
+      downloadImageBtn.innerHTML = '<i class="fas fa-camera"></i> 📸 Download as Image';
+      downloadImageBtn.disabled = false;
+    }
+  });
+  
+  downloadPDFBtn.addEventListener('click', async () => {
+    try {
+      downloadPDFBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Preparing PDF...';
+      downloadPDFBtn.disabled = true;
+      
+      const canvas = await html2canvas(resumeCard, {
+        scale: 2.5,
+        backgroundColor: '#0a0d1f',
+        logging: false,
+        useCORS: true
+      });
+      
+      const { jsPDF } = await import('https://cdn.skypack.dev/jspdf@2.5.1');
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 210;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save('Tanish_Raheja_Resume.pdf');
+      
+      downloadPDFBtn.innerHTML = '<i class="fas fa-file-pdf"></i> 📄 Save as PDF';
+      downloadPDFBtn.disabled = false;
+    } catch (error) {
+      window.print();
+      downloadPDFBtn.innerHTML = '<i class="fas fa-file-pdf"></i> 📄 Save as PDF';
+      downloadPDFBtn.disabled = false;
+    }
+  });
+  
+  printBtn.addEventListener('click', () => {
+    window.print();
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  gsap.fromTo(".resume-card", 
+    { y: 40, opacity: 0 }, 
+    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+  );
+</script>
+</body>
+</html>
