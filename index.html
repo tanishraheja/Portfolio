@@ -1,615 +1,387 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Tanish Raheja | Data Analyst - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: #02020A;
-      color: #ededee;
-      overflow-x: hidden;
-      cursor: none;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7ff" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="author" content="Tanish Raheja" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Tanish Raheja — Data Analyst, Python Developer, Power BI Developer, and AI Creator."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tanish Raheja — Data, Intelligence & Digital Craft" />
+    <meta property="og:description" content="A portfolio of analytics, dashboards, digital experiments, and thoughtful problem solving." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Tanish Raheja — Data, Intelligence & Digital Craft" />
+    <meta name="twitter:description" content="A portfolio of analytics, dashboards, digital experiments, and thoughtful problem solving." />
+    <title>Tanish Raheja — Data, Intelligence & Digital Craft</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <noscript><div class="noscript-banner">This portfolio is fully readable without JavaScript. Enable it for the dashboard filters, theme switch, and assistant.</div></noscript>
     
-    /* ========== PILL SHAPE IOS STYLE NAVBAR - LEFT & RIGHT LAYOUT ========== */
-    .ios-navbar {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: auto;
-      min-width: 280px;
-      max-width: 90%;
-      z-index: 1000;
-      background: rgba(10, 15, 30, 0.5);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 100px;
-      border: 0.5px solid rgba(255, 255, 255, 0.12);
-      transition: all 0.3s ease;
-      padding: 0;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    }
-    .ios-navbar.scrolled {
-      top: 15px;
-      background: rgba(10, 15, 30, 0.8);
-      backdrop-filter: blur(25px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 242, 254, 0.15);
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.4rem 1rem;
-    }
-    
-    /* ========== PREMIUM ANIMATED LOGO - LEFT SIDE ========== */
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 242, 254, 0.08);
-      padding: 6px 14px;
-      border-radius: 60px;
-      border: 1px solid rgba(0, 242, 254, 0.2);
-      transition: all 0.3s;
-    }
-    .nav-logo:hover {
-      border-color: #00f2fe;
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
-      transform: scale(1.02);
-      background: rgba(0, 242, 254, 0.12);
-    }
-    .logo-icon {
-      position: relative;
-      width: 26px;
-      height: 26px;
-    }
-    .logo-icon svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 0 5px #00f2fe);
-    }
-    .logo-text {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: 0.3px;
-    }
-    .logo-text span {
-      color: #00f2fe;
-    }
-    @keyframes logoPulse {
-      0%, 100% { opacity: 0.6; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.15); }
-    }
-    .logo-icon svg .bar {
-      animation: logoPulse 2s ease-in-out infinite;
-      transform-origin: bottom;
-    }
-    .logo-icon svg .bar:nth-child(2) { animation-delay: 0.2s; }
-    .logo-icon svg .bar:nth-child(3) { animation-delay: 0.4s; }
-    .logo-icon svg .bar:nth-child(4) { animation-delay: 0.6s; }
-    
-    /* ========== NAV LINKS - RIGHT SIDE ========== */
-    .nav-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.3s;
-      position: relative;
-      padding: 8px 14px;
-      border-radius: 40px;
-    }
-    .nav-links a:hover {
-      color: #00f2fe;
-      background: rgba(0, 242, 254, 0.1);
-    }
-    
-    .menu-btn {
-      display: none;
-      background: rgba(255,255,255,0.08);
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      backdrop-filter: blur(10px);
-    }
-    
-    @media (max-width: 850px) {
-      .ios-navbar {
-        top: 15px;
-        width: 94%;
-        max-width: 94%;
-        min-width: auto;
-      }
-      .nav-container {
-        padding: 0.3rem 0.8rem;
-      }
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        width: 240px;
-        background: rgba(10, 15, 30, 0.96);
-        backdrop-filter: blur(25px);
-        flex-direction: column;
-        gap: 0.4rem;
-        transition: right 0.3s ease;
-        z-index: 1001;
-        border-radius: 28px;
-        padding: 1.2rem;
-        border: 1px solid rgba(0, 242, 254, 0.2);
-      }
-      .nav-links.active {
-        right: 15px;
-      }
-      .nav-links a {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-      }
-      .menu-btn {
-        display: block;
-        position: relative;
-        z-index: 1002;
-      }
-      .nav-logo {
-        padding: 4px 12px;
-      }
-      .logo-icon {
-        width: 22px;
-        height: 22px;
-      }
-      .logo-text {
-        font-size: 0.75rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .ios-navbar {
-        top: 12px;
-        width: 96%;
-      }
-      .nav-logo {
-        padding: 3px 10px;
-      }
-      .nav-links {
-        width: 220px;
-        top: 65px;
-      }
-    }
-    
-    /* CUSTOM CURSOR */
-    .cursor {
-      width: 12px; height: 12px; background: #00f2fe; border-radius: 50%;
-      position: fixed; pointer-events: none; z-index: 9999;
-      transition: transform 0.1s ease; box-shadow: 0 0 15px #00f2fe;
-    }
-    .cursor-follower {
-      width: 35px; height: 35px; border: 2px solid rgba(0, 242, 254, 0.5);
-      border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
-      transition: 0.15s ease;
-    }
-    @media (max-width: 768px) { .cursor, .cursor-follower { display: none; } body { cursor: auto; } }
-    
-    /* BACK TO TOP BUTTON */
-    .back-to-top {
-      position: fixed; bottom: 30px; right: 30px;
-      width: 50px; height: 50px; background: linear-gradient(135deg, #00f2fe, #4facfe);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; z-index: 999; opacity: 0; visibility: hidden;
-      transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,242,254,0.3);
-    }
-    .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,242,254,0.5); }
-    .back-to-top i { color: #02020A; font-size: 1.3rem; }
-    
-    .animated-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 30% 10%, #0a0a2a, #010105, #000000);
-      z-index: -2;
-    }
-    .animated-bg::before {
-      content: ''; position: absolute; width: 200%; height: 200%;
-      background: radial-gradient(circle at 40% 50%, rgba(0, 242, 254, 0.08), transparent 50%);
-      animation: rotateBg 20s linear infinite;
-    }
-    @keyframes rotateBg { 0% { transform: translate(-25%, -25%) rotate(0deg); } 100% { transform: translate(-25%, -25%) rotate(360deg); } }
-    .noise {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 2px, transparent 2px, transparent 4px);
-      pointer-events: none; z-index: -1;
-    }
-    #particleCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-    .container { max-width: 1300px; margin: 0 auto; padding: 7rem 4rem 4rem; position: relative; z-index: 2; }
-    @media (max-width: 768px) { .container { padding: 6rem 1.2rem 3rem; } }
-    section { scroll-margin-top: 100px; }
-    
-    /* HERO */
-    .hero {
-      min-height: 85vh; display: flex; align-items: center; justify-content: center;
-      gap: 3rem; flex-wrap: wrap; padding: 2rem 0;
-    }
-    .hero-content { flex: 1.2; min-width: 280px; }
-    .hero-visual { flex: 0.9; min-width: 260px; display: flex; justify-content: center; align-items: center; }
-    
-    .glow-text {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #ffffff 0%, #00f2fe 30%, #4facfe 50%, #00f2fe 70%, #ffffff 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shine 4s linear infinite;
-      text-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
-      letter-spacing: -0.02em;
-    }
-    @keyframes shine {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .glow-text::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40%;
-      height: 3px;
-      background: linear-gradient(90deg, #00f2fe, #4facfe, transparent);
-      border-radius: 3px;
-      animation: underlineGlow 3s ease-in-out infinite;
-    }
-    @keyframes underlineGlow {
-      0%, 100% { width: 40%; opacity: 0.6; }
-      50% { width: 60%; opacity: 1; }
-    }
-    
-    .hero-sub { 
-      font-size: clamp(1rem, 4vw, 1.5rem); 
-      font-weight: 500; 
-      margin-top: 1rem; 
-      color: #b0c4ff;
-      letter-spacing: 1px;
-    }
-    
-    .hero-role {
-      font-size: clamp(0.9rem, 3.5vw, 1.3rem);
-      color: #00f2fe;
-      margin: 1rem 0;
-      letter-spacing: 1px;
-      min-height: 60px;
-    }
-    .typed-text { color: #ffffff; font-weight: 600; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
-    .cursor-blink { display: inline-block; width: 3px; background-color: #00f2fe; margin-left: 4px; animation: blink 0.7s infinite; }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    
-    .hero-desc { font-size: clamp(0.85rem, 3vw, 1rem); color: #9ca3cf; margin: 1rem 0 1.5rem; line-height: 1.6; }
-    .hero-social { display: flex; gap: 1.2rem; margin-top: 0.5rem; flex-wrap: wrap; }
-    .hero-social a {
-      background: rgba(0, 242, 254, 0.08); width: 48px; height: 48px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; transition: all 0.3s;
-      border: 1px solid rgba(0, 242, 254, 0.3); text-decoration: none; color: #00f2fe; font-size: 1.4rem;
-    }
-    .hero-social a:hover { transform: translateY(-5px); background: #00f2fe; color: #02020A; box-shadow: 0 0 20px rgba(0, 242, 254, 0.6); }
-    .cta-btn {
-      background: linear-gradient(95deg, #00c6fb, #005bea); border: none; padding: 1rem 2rem;
-      border-radius: 40px; font-weight: 600; color: white; cursor: pointer; transition: all 0.3s;
-      width: fit-content; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;
-      margin-top: 0.8rem; position: relative; overflow: hidden; z-index: 1;
-      box-shadow: 0 5px 20px rgba(0, 198, 251, 0.3);
-    }
-    .cta-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; z-index: -1; }
-    .cta-btn:hover::before { left: 100%; }
-    .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 198, 251, 0.5); gap: 15px; }
-    
-    .analyst-illustration svg { width: 100%; max-width: 360px; height: auto; filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.3)); }
-    @keyframes floatAnim { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
-    .floating-elem { animation: floatAnim 4s ease-in-out infinite; }
-    .pulse-ring { animation: pulseGlow 2s ease-in-out infinite; }
-    @keyframes pulseGlow { 0%,100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
-    .spin-chart { transform-origin: center; animation: spinSlow 12s linear infinite; }
-    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    
-    .skills-marquee { margin: 3rem 0; overflow: hidden; white-space: nowrap; background: rgba(0, 242, 254, 0.05); padding: 1rem 0; border-radius: 60px; backdrop-filter: blur(8px); }
-    .marquee-content { display: inline-flex; gap: 2.5rem; animation: slide 22s linear infinite; }
-    .marquee-content span { font-size: 1.1rem; font-weight: 500; color: #b8e2ff; }
-    @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    
-    .section-title { font-size: clamp(1.6rem, 5vw, 2.5rem); font-weight: 700; margin: 3rem 0 2rem; position: relative; display: inline-flex; align-items: center; gap: 15px; }
-    .section-title i { color: #00f2fe; font-size: clamp(1.3rem, 4vw, 2rem); animation: bounceArrow 1.5s infinite; }
-    @keyframes bounceArrow { 0%,100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
-    .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60%; height: 3px; background: linear-gradient(90deg, #00f2fe, transparent); }
-    
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin: 2rem 0; }
-    @media (max-width: 700px) { .projects-grid { grid-template-columns: 1fr; gap: 1.2rem; } }
-    .project-card {
-      background: rgba(15, 20, 35, 0.6); backdrop-filter: blur(12px); border-radius: 28px; padding: 1.8rem;
-      border: 1px solid rgba(0, 242, 254, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;
-      transform-style: preserve-3d; will-change: transform;
-    }
-    .project-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.08), transparent); transition: left 0.7s; z-index: 0; }
-    .project-card:hover::before { left: 100%; }
-    .project-card:hover { border-color: #00f2fe; box-shadow: 0 25px 40px -12px rgba(0, 242, 254, 0.3); }
-    .project-icon { font-size: 2.5rem; color: #00f2fe; margin-bottom: 1rem; position: relative; z-index: 1; }
-    .project-card h3 { font-size: 1.5rem; margin-bottom: 0.8rem; position: relative; z-index: 1; }
-    .project-card p { position: relative; z-index: 1; color: #b0bbdf; line-height: 1.5; }
-    .tech-badge { display: inline-block; background: rgba(0, 242, 254, 0.15); padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem; margin: 0.5rem 0.4rem 0 0; position: relative; z-index: 1; }
-    .project-links { margin-top: 1rem; position: relative; z-index: 1; }
-    .project-links a { color: #00f2fe; margin-right: 1rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
-    .project-links a:hover { transform: translateX(5px); }
-    
-    .education-section { margin: 2rem 0 3rem; }
-    .education-grid { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0; }
-    .edu-card {
-      background: linear-gradient(135deg, rgba(0, 91, 234, 0.15), rgba(0, 198, 251, 0.08));
-      backdrop-filter: blur(12px); border-radius: 28px; padding: 1.5rem 2rem;
-      border: 1px solid rgba(0, 242, 254, 0.25); transition: all 0.3s ease; transform-style: preserve-3d; will-change: transform;
-    }
-    .edu-card:hover { border-color: #00f2fe; box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2); }
-    .edu-icon { font-size: 1.8rem; color: #00f2fe; margin-bottom: 0.5rem; }
-    .edu-card h3 { font-size: 1.4rem; margin-bottom: 0.3rem; }
-    .edu-card .institute { color: #00f2fe; font-weight: 500; margin-bottom: 0.5rem; }
-    .edu-card .detail { color: #b0bbdf; font-size: 0.9rem; line-height: 1.5; }
-    .edu-stats { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.8rem; }
-    .edu-stat { background: rgba(0, 242, 254, 0.12); padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; color: #00f2fe; }
-    
-    .email-btn-container { display: flex; justify-content: center; margin: 2rem 0; }
-    .email-btn {
-      background: linear-gradient(135deg, #00f2fe, #4facfe);
-      border: none; padding: 1.2rem 2.5rem; border-radius: 60px;
-      font-size: 1.2rem; font-weight: 700; color: #02020A;
-      cursor: pointer; transition: all 0.3s;
-      display: inline-flex; align-items: center; gap: 15px;
-      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
-    }
-    .email-btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 242, 254, 0.5); gap: 20px; }
-    .email-btn i { font-size: 1.4rem; }
-    .email-note { text-align: center; color: #7a85a5; margin-top: 1rem; font-size: 0.85rem; }
-    
-    footer { text-align: center; padding: 2rem; color: #5a6a8a; }
-    
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; text-align: center; }
-      .hero-content { text-align: center; }
-      .hero-social { justify-content: center; }
-      .cta-btn { margin: 0 auto; }
-      .section-title:after { left: 50%; transform: translateX(-50%); width: 40%; }
-      .email-btn { padding: 0.9rem 1.8rem; font-size: 1rem; }
-      .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
-      .glow-text::after { left: 50%; transform: translateX(-50%); width: 30%; }
-    }
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0a0a1a; }
-    ::-webkit-scrollbar-thumb { background: #00f2fe; border-radius: 10px; }
-  </style>
-</head>
-<body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-<!-- PILL SHAPE IOS STYLE NAVBAR - LOGO LEFT | LINKS RIGHT -->
-<nav class="ios-navbar" id="navbar">
-  <div class="nav-container">
-    <div class="nav-logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="18" width="4" height="10" rx="1" fill="#00f2fe" class="bar" opacity="0.9"/>
-          <rect x="10" y="14" width="4" height="14" rx="1" fill="#4facfe" class="bar" opacity="0.9"/>
-          <rect x="16" y="8" width="4" height="20" rx="1" fill="#00f2fe" class="bar" opacity="0.9"/>
-          <rect x="22" y="4" width="4" height="24" rx="1" fill="#4facfe" class="bar" opacity="0.9"/>
-          <polyline points="6,22 12,18 18,12 24,8" stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="24" cy="8" r="1.5" fill="#ffffff" opacity="0.8">
-            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
-          </circle>
-        </svg>
-      </div>
-      <div class="logo-text">DATA<span>ALCHEMIST</span></div>
-    </div>
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#projects">Work</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-  </div>
-</nav>
+    <header class="site-header" data-header>
+      
 
-<div class="animated-bg"></div>
-<div class="noise"></div>
-<canvas id="particleCanvas"></canvas>
-<div class="cursor"></div>
-<div class="cursor-follower"></div>
-<div class="back-to-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></div>
+      <div class="nav-pill">
+      <a class="nav-mark" href="#top" aria-label="Back to the top"><span aria-hidden="true">TR</span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#main">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#certificates">Proof</a>
+        
+      </nav>
 
-<div class="container">
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="glow-text">Tanish Raheja</div>
-      <div class="hero-sub">Turning Data into Visual Stories</div>
-      <div class="hero-role">
-        <span class="typed-text"></span><span class="cursor-blink"></span>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode"><span class="theme-icon" aria-hidden="true">☼</span><span class="theme-label">Light</span></button>
+      <a class="header-cta" href="mailto:rahejatanish29@gmail.com">
+        <span class="header-cta-label">rahejatanish29@gmail.com</span><span aria-hidden="true">↗</span>
+      </a>
       </div>
-      <div class="hero-desc">I build immersive dashboards, analyze complex datasets, and craft data-driven experiences using Python, SQL, and Power BI. Transforming raw numbers into actionable insights.</div>
-      <div class="hero-social">
-        <a href="https://github.com/tanishraheja" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/tanishraheja" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="resume.html"><i class="fas fa-file-alt"></i></a>
-      </div>
-      <button class="cta-btn" id="exploreWorkBtn">Explore My Work <i class="fas fa-arrow-right"></i></button>
-    </div>
-    <div class="hero-visual">
-      <div class="analyst-illustration">
-        <svg viewBox="0 0 400 400" fill="none">
-          <circle cx="200" cy="200" r="180" fill="url(#glowGrad)" opacity="0.3" class="pulse-ring"/>
-          <defs><radialGradient id="glowGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#00f2fe"/><stop offset="100%" stop-color="transparent"/></radialGradient><linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00f2fe"/><stop offset="100%" stop-color="#4facfe"/></linearGradient></defs>
-          <g class="floating-elem"><rect x="100" y="280" width="40" height="80" rx="6" fill="url(#barGrad)"/><rect x="155" y="250" width="40" height="110" rx="6" fill="url(#barGrad)"/><rect x="210" y="220" width="40" height="140" rx="6" fill="url(#barGrad)"/><rect x="265" y="260" width="40" height="100" rx="6" fill="url(#barGrad)"/><polyline points="120,300 175,270 230,240 285,280" stroke="#00f2fe" stroke-width="3" fill="none" stroke-dasharray="5 5"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/></polyline></g>
-          <g transform="translate(320, 140)" class="spin-chart"><circle cx="0" cy="0" r="45" fill="none" stroke="#00f2fe" stroke-width="8" stroke-dasharray="85 200"/><circle cx="0" cy="0" r="45" fill="none" stroke="#4facfe" stroke-width="8" stroke-dasharray="60 200" stroke-dashoffset="-85"/><circle cx="0" cy="0" r="45" fill="none" stroke="#ffffff" stroke-width="8" stroke-dasharray="40 200" stroke-dashoffset="-145"/></g>
-          <circle cx="80" cy="150" r="8" fill="#00f2fe" class="floating-elem"/><circle cx="340" cy="280" r="6" fill="#4facfe" class="floating-elem"/>
-          <g transform="translate(60,60)"><circle cx="20" cy="20" r="18" stroke="#00f2fe" stroke-width="3" fill="none"/><line x1="33" y1="33" x2="48" y2="48" stroke="#00f2fe" stroke-width="4"/></g>
-          <g transform="translate(320,320)"><ellipse cx="25" cy="10" rx="20" ry="8" stroke="#00f2fe" stroke-width="2" fill="none"/><path d="M5 10 L5 25 C5 33 15 38 25 38 C35 38 45 33 45 25 L45 10" stroke="#00f2fe" stroke-width="2" fill="none"/></g>
-        </svg>
-      </div>
-    </div>
-  </section>
-  
-  <div class="skills-marquee"><div class="marquee-content"><span>🐍 Python</span><span>📊 SQL</span><span>🐼 Pandas</span><span>🔢 NumPy</span><span>📈 Power BI</span><span>📉 Excel</span><span>🗄️ MySQL</span><span>✨ Data Viz</span><span>📋 Dashboarding</span><span>🐍 Python</span><span>📊 SQL</span><span>🐼 Pandas</span><span>🔢 NumPy</span><span>📈 Power BI</span><span>📉 Excel</span><span>🗄️ MySQL</span><span>✨ Data Viz</span><span>📋 Dashboarding</span></div></div>
-  
-  <section id="projects"><h2 class="section-title"><i class="fas fa-arrow-right"></i> Featured Projects <i class="fas fa-chart-line"></i></h2>
-    <div class="projects-grid">
-      <div class="project-card"><div class="project-icon"><i class="fas fa-users"></i></div><h3>Customer Behavior Analysis</h3><p>Built a customer shopping behavior analysis project using Python, SQL, Pandas, and storytelling dashboards to identify customer patterns and insights.</p><div><span class="tech-badge">Python</span><span class="tech-badge">SQL</span><span class="tech-badge">Pandas</span><span class="tech-badge">Power BI</span></div><div class="project-links"><a href="https://drive.google.com/file/d/15yP22Do35umeYh521qrMj0Z4zDAxZtix/view" target="_blank"><i class="fab fa-google-drive"></i> View Project</a></div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-tv"></i></div><h3>Netflix Insights Dashboard</h3><p>Created an entertainment analytics dashboard exploring genre popularity, release trends, ratings, and streaming insights.</p><div><span class="tech-badge">Python</span><span class="tech-badge">SQL</span><span class="tech-badge">Power BI</span></div><div class="project-links"><a href="https://drive.google.com/file/d/1ZglfXl7fhes9GJtsCpHphebcmW--V8_J/view" target="_blank"><i class="fab fa-google-drive"></i> View Project</a></div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-chart-line"></i></div><h3>E‑Commerce Sales Analysis</h3><p>Analyzed sales performance, revenue growth, customer purchases, and product trends using dashboards and SQL analysis.</p><div><span class="tech-badge">SQL</span><span class="tech-badge">Excel</span><span class="tech-badge">Power BI</span></div><div class="project-links"><a href="https://drive.google.com/file/d/1NcjgdbCXBJaYg-whSH7I5AV_qaHmATGl/view" target="_blank"><i class="fab fa-google-drive"></i> View Project</a></div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-code"></i></div><h3>CourseKart</h3><p>Frontend practice project built while learning HTML & CSS. Designed a simple course-selling landing page.</p><div><span class="tech-badge">HTML</span><span class="tech-badge">CSS</span></div><div class="project-links"><a href="https://tanishraheja.github.io/Coursekart/coursekart.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a></div></div>
-    </div>
-  </section>
-  
-  <section id="education" class="education-section"><h2 class="section-title"><i class="fas fa-arrow-right"></i> Education Journey <i class="fas fa-graduation-cap"></i></h2>
-    <div class="education-grid">
-      <div class="edu-card"><div class="edu-icon"><i class="fas fa-university"></i></div><h3>Bachelor of Commerce (B.Com)</h3><div class="institute">Bundelkhand University, Jhansi</div><div class="detail">Graduation Program • Specialization in Business Analytics & Data Systems</div><div class="edu-stats"><span class="edu-stat">📅 2024 - 2027</span><span class="edu-stat">📊 Pursuing</span></div></div>
-      <div class="edu-card"><div class="edu-icon"><i class="fas fa-certificate"></i></div><h3>'O' Level Computer Certification</h3><div class="institute">Info Park Institute of IT & Management, Orai (NIELIT)</div><div class="detail">Government of India Accredited • Modules: IT Tools, Python Programming, Web Design, Data Management</div><div class="edu-stats"><span class="edu-stat">📅 2024 - 2025</span><span class="edu-stat">✅ Completed - Grade A</span></div></div>
-    </div>
-  </section>
-  
-  <section id="contact">
-    <h2 class="section-title"><i class="fas fa-arrow-right"></i> Let's Connect <i class="fas fa-paper-plane"></i></h2>
-    <div class="email-btn-container">
-      <button class="email-btn" id="openMailBtn">
-        <i class="fas fa-envelope"></i> Open Mail to Send Message
-        <i class="fas fa-arrow-right"></i>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span>
       </button>
-    </div>
-    <p class="email-note">📧 Click the button above to send me an email directly at <strong>rahejatanish29@gmail.com</strong></p>
-  </section>
-  
-  <footer><p>© 2025 Tanish Raheja — Animated Portfolio | Data Alchemist</p></footer>
-</div>
+    </header>
 
-<script>
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
+    <main id="top">
+      <section class="hero section-shell" id="main">
+        <div class="hero-ambient" aria-hidden="true"><div class="particle-field" data-particles></div><div class="hero-noise"></div></div>
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="status-dot"></span> Open to meaningful opportunities <span class="eyebrow-code">/ 01</span></div>
+          <h1>
+            <span class="hero-kicker">DATA INTO</span>
+            <span class="serif-line">DECISIONS.</span>
+          </h1>
+          <p class="hero-intro">
+            Hi, I’m <strong>Tanish Raheja</strong>.<br />I transform raw data into meaningful insights through Python, SQL, Power BI, and storytelling.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#work">Explore my work <span>↓</span></a>
+            <a class="text-link" href="https://www.linkedin.com/in/tanishraheja" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
+          </div>
+          <div class="hero-note">
+            <span class="note-line"></span>
+            <span>Based in Orai, Uttar Pradesh · Building with curiosity</span>
+          </div>
+        </div>
 
-  const menuBtn = document.getElementById('menuBtn');
-  const navLinks = document.getElementById('navLinks');
-  menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuBtn.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-  });
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-  });
+        <div class="hero-visual reveal reveal-delay-1" data-tilt>
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+          <div class="portrait-frame">
+            <div class="portrait-topline">
+              <span>PROFILE / 01</span>
+              <span class="tiny-pulse"></span>
+            </div>
+            <img src="assets/tanish-raheja-portrait.png" alt="Illustrated portrait of Tanish Raheja" width="455" height="555" fetchpriority="high" decoding="async" />
+            <div class="portrait-caption">
+              <div>
+                <span class="caption-label">Current lens</span>
+                <strong>Insight over noise.</strong>
+              </div>
+              <span class="portrait-arrow">↗</span>
+            </div>
+          </div>
+          <div class="floating-card floating-card-top">
+            <span class="card-kicker">NOW EXPLORING</span>
+            <strong>AI + analytics</strong>
+            <span class="mini-bars"><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+          <div class="floating-card floating-card-bottom">
+            <span class="sparkle">✦</span>
+            <span>Always learning<br /><b>always shipping</b></span>
+          </div>
+        </div>
 
-  const roles = ["📊 Data Analyst", "📈 Dashboard Architect", "🐍 Python Developer", "📉 SQL Expert", "⚡ Power BI Specialist"];
-  let roleIndex = 0, charIndex = 0, isDeleting = false;
-  const typedTextSpan = document.querySelector(".typed-text");
-  function typeEffect() {
-    const currentRole = roles[roleIndex];
-    if (isDeleting) {
-      typedTextSpan.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typedTextSpan.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-    }
-    if (!isDeleting && charIndex === currentRole.length) { isDeleting = true; setTimeout(typeEffect, 2500); return; }
-    if (isDeleting && charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; setTimeout(typeEffect, 500); return; }
-    setTimeout(typeEffect, isDeleting ? 50 : 100);
-  }
-  typeEffect();
+        <div class="hero-scroll" aria-hidden="true"><span>Scroll to explore</span><i></i></div>
+      </section>
 
-  const backToTopBtn = document.getElementById('backToTopBtn');
-  window.addEventListener('scroll', () => { backToTopBtn.classList.toggle('show', window.scrollY > 500); });
-  backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      <section class="ticker-band" aria-label="Areas of expertise">
+        <div class="ticker-track">
+          <span>DATA ANALYTICS</span><b>✦</b><span>PYTHON</span><b>✦</b><span>POWER BI</span><b>✦</b><span>AI CREATION</span><b>✦</b><span>VISUAL STORYTELLING</span><b>✦</b>
+          <span>DATA ANALYTICS</span><b>✦</b><span>PYTHON</span><b>✦</b><span>POWER BI</span><b>✦</b><span>AI CREATION</span><b>✦</b><span>VISUAL STORYTELLING</span><b>✦</b>
+        </div>
+      </section>
 
-  if (window.innerWidth > 768) {
-    const cursor = document.querySelector('.cursor'), follower = document.querySelector('.cursor-follower');
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX - 6 + 'px';
-      cursor.style.top = e.clientY - 6 + 'px';
-      follower.style.left = e.clientX - 17 + 'px';
-      follower.style.top = e.clientY - 17 + 'px';
-    });
-    document.querySelectorAll('a, button, .project-card, .edu-card').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(1.8)'; follower.style.transform = 'scale(1.5)'; follower.style.borderColor = '#00f2fe'; });
-      el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; follower.style.transform = 'scale(1)'; });
-    });
-  }
+      <section class="section-shell intro-section" id="about">
+        <div class="section-label reveal"><span>( 01 )</span><span>THE THROUGHLINE</span></div>
+        <div class="intro-grid">
+          <h2 class="reveal">Good analysis should feel like a light turning on.</h2>
+          <div class="intro-copy reveal reveal-delay-1">
+            <p>
+              I work at the intersection of structured thinking and creative communication. I take raw datasets, find the story inside them, and shape that story into dashboards, decisions, and digital experiences people can actually use.
+            </p>
+            <a class="text-link" href="#approach">See how I work <span>↓</span></a>
+          </div>
+        </div>
+        <div class="stat-row reveal reveal-delay-2" data-stats>
+          <div class="stat"><strong data-count="5" data-suffix="+">00+</strong><span>Featured projects</span></div>
+          <div class="stat"><strong data-count="4">00</strong><span>Dashboard builds</span></div>
+          <div class="stat"><strong data-count="3">00</strong><span>Certificates added</span></div>
+          <div class="stat"><strong data-count="100" data-suffix="%">00%</strong><span>Curiosity in the backlog</span></div>
+        </div>
+      </section>
 
-  document.querySelectorAll('.project-card, .edu-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left, y = e.clientY - rect.top;
-      const centerX = rect.width / 2, centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 20, rotateY = (centerX - x) / 20;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
+      <section class="work-section section-shell" id="work">
+        <div class="section-heading reveal">
+          <div class="section-label"><span>( 02 )</span><span>SELECTED WORK</span></div>
+          <p>A few ways I’ve turned questions into something you can see.</p>
+        </div>
 
-  const canvas = document.getElementById('particleCanvas'), ctx = canvas.getContext('2d');
-  let width = window.innerWidth, height = window.innerHeight, particlesArray = [];
-  function resizeCanvas() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
-  window.addEventListener('resize', resizeCanvas); resizeCanvas();
-  class ParticleFlow {
-    constructor() { this.x = Math.random() * width; this.y = Math.random() * height; this.size = Math.random() * 2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.7; this.speedY = (Math.random() - 0.5) * 0.5; this.color = `rgba(0, 242, 254, ${Math.random() * 0.4})`; }
-    update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0) this.x = width; if (this.x > width) this.x = 0; if (this.y < 0) this.y = height; if (this.y > height) this.y = 0; }
-    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.fill(); }
-  }
-  function initParticles() { particlesArray = []; let count = Math.min(140, Math.floor(width / 8)); for (let i = 0; i < count; i++) particlesArray.push(new ParticleFlow()); }
-  function animateParticles() { ctx.clearRect(0, 0, width, height); for (let p of particlesArray) { p.update(); p.draw(); } requestAnimationFrame(animateParticles); }
-  initParticles(); animateParticles(); window.addEventListener('resize', () => { initParticles(); });
+        <div class="project-grid">
+          <article class="project-card project-card-large project-purple reveal" data-tilt>
+            <a class="project-link" href="https://drive.google.com/file/d/15yP22Do35umeYh521qrMj0Z4zDAxZtix/view" target="_blank" rel="noreferrer" aria-label="View Customer Behavior Analysis project"></a>
+            <div class="project-visual behavior-visual">
+              <div class="visual-top"><span>BEHAVIOR / 2025</span><span>↗</span></div>
+              <div class="behavior-layout">
+                <div class="behavior-score"><span>retention score</span><strong>78.4%</strong><em>+12.8%</em></div>
+                <div class="ring-chart"><span>62</span><small>SEGMENTS</small></div>
+              </div>
+              <div class="chart-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="chart-axis"><span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span></div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>01 / ANALYTICS</span><span>Python · SQL · Power BI</span></div>
+              <h3>Customer Behavior<br /><em>Analysis</em></h3>
+              <p>Finding the patterns behind purchasing behavior, customer segments, and the next best question.</p>
+              <span class="project-arrow">View project <b>↗</b></span>
+            </div>
+          </article>
 
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from(".hero-content .glow-text, .hero-sub, .hero-role, .hero-desc, .hero-social, .cta-btn", { duration: 0.8, y: 40, opacity: 0, stagger: 0.12, ease: "power3.out" });
-  gsap.from(".hero-visual", { duration: 1, scale: 0.8, opacity: 0, ease: "back.out(0.4)" });
-  gsap.utils.toArray(".project-card").forEach((card, i) => { gsap.from(card, { scrollTrigger: { trigger: card, start: "top 85%" }, duration: 0.8, y: 70, opacity: 0, scale: 0.9, delay: i * 0.1 }); });
-  gsap.utils.toArray(".edu-card").forEach((card, i) => { gsap.from(card, { scrollTrigger: { trigger: card, start: "top 90%" }, duration: 0.8, x: -50, opacity: 0, delay: i * 0.15 }); });
-  gsap.from(".email-btn-container", { scrollTrigger: { trigger: ".email-btn-container", start: "top 85%" }, duration: 0.9, y: 60, opacity: 0 });
+          <article class="project-card project-card-tall project-orange reveal reveal-delay-1" data-tilt>
+            <a class="project-link" href="https://drive.google.com/file/d/1ZglfXl7fhes9GJtsCpHphebcmW--V8_J/view" target="_blank" rel="noreferrer" aria-label="View Netflix Insights Dashboard project"></a>
+            <div class="project-visual netflix-visual">
+              <div class="visual-top"><span>STREAM / 2025</span><span>↗</span></div>
+              <div class="netflix-window">
+                <div class="window-head"><span class="window-dot"></span><span>insights.dashboard</span><i>•••</i></div>
+                <div class="window-main">
+                  <div class="netflix-number"><small>TOP GENRE</small><strong>Drama</strong><span>+18.2% this quarter</span></div>
+                  <div class="donut-chart"><span>42%</span></div>
+                </div>
+                <div class="netflix-bars"><i style="--bar: 78%"><b>Drama</b></i><i style="--bar: 58%"><b>Comedy</b></i><i style="--bar: 44%"><b>Documentary</b></i><i style="--bar: 32%"><b>Action</b></i></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>02 / DASHBOARD</span><span>Python · SQL</span></div>
+              <h3>Netflix<br /><em>Insights</em></h3>
+              <p>Exploring genre, ratings, and release trends through a dashboard made for quick questions.</p>
+              <span class="project-arrow">View project <b>↗</b></span>
+            </div>
+          </article>
 
-  document.getElementById('exploreWorkBtn').addEventListener('click', () => { document.getElementById('projects').scrollIntoView({ behavior: 'smooth' }); });
-  document.querySelectorAll('.nav-links a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const target = document.getElementById(targetId);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
+          <article class="project-card project-card-wide project-blue reveal reveal-delay-2" data-tilt>
+            <a class="project-link" href="https://drive.google.com/file/d/1NcjgdbCXBJaYg-whSH7I5AV_qaHmATGl/view" target="_blank" rel="noreferrer" aria-label="View E-Commerce Sales Analysis project"></a>
+            <div class="project-visual ecommerce-visual">
+              <div class="visual-top"><span>COMMERCE / 2025</span><span>↗</span></div>
+              <div class="ecommerce-chart">
+                <div class="ecommerce-heading"><small>Revenue overview</small><strong>₹ 1.24M</strong><em>+24.8%</em></div>
+                <div class="bar-chart"><i style="--height: 36%"></i><i style="--height: 47%"></i><i style="--height: 43%"></i><i style="--height: 65%"></i><i style="--height: 60%"></i><i style="--height: 82%"></i><i style="--height: 72%"></i><i style="--height: 94%"></i><i style="--height: 86%"></i></div>
+                <div class="bar-labels"><span>Q1</span><span>Q2</span><span>Q3</span></div>
+              </div>
+              <div class="ecommerce-pills"><span>Revenue <b>↑ 24%</b></span><span>Profit <b>↑ 11%</b></span><span>Orders <b>2,840</b></span></div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>03 / BUSINESS INTELLIGENCE</span><span>SQL · Excel · Power BI</span></div>
+              <h3>E-Commerce Sales <em>Analysis</em></h3>
+              <p>Turning sales performance into a clear view of revenue growth, product opportunity, and customer momentum.</p>
+              <span class="project-arrow">View project <b>↗</b></span>
+            </div>
+          </article>
 
-  document.getElementById('openMailBtn').addEventListener('click', () => {
-    window.location.href = 'mailto:rahejatanish29@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Tanish%2C%0A%0AI%20visited%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0ARegards%2C%0A[Your%20Name]';
-  });
-</script>
-</body>
+          <article class="project-card project-card-small project-ink reveal" data-tilt>
+            <a class="project-link" href="https://github.com/tanishraheja/sales" target="_blank" rel="noreferrer" aria-label="View Sales Performance Dashboard project"></a>
+            <div class="project-visual sales-visual">
+              <div class="visual-top"><span>SALES / POWER BI</span><span>↗</span></div>
+              <div class="sales-grid"><div><small>total sales</small><strong>₹ 84.2K</strong></div><div><small>profit</small><strong>32.8%</strong></div><div class="sales-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="project-body"><div class="project-meta"><span>04 / DASHBOARD</span><span>GitHub</span></div><h3>Sales Performance<br /><em>Dashboard</em></h3><p>A KPI-first dashboard for revenue, profit, quantity, and customer trends.</p><span class="project-arrow">View project <b>↗</b></span></div>
+          </article>
+
+          <article class="project-card project-card-small project-cream reveal reveal-delay-1" data-tilt>
+            <a class="project-link" href="https://tanishraheja.github.io/Coursekart/coursekart.html" target="_blank" rel="noreferrer" aria-label="View CourseKart landing page"></a>
+            <div class="project-visual course-visual"><div class="visual-top"><span>COURSEKART / 2024</span><span>↗</span></div><div class="course-screen"><span class="course-logo">course<span>kart</span></span><div class="course-hero"><small>Learn without limits</small><strong>Build the<br /><em>next you.</em></strong><span class="course-button">Explore courses →</span></div><div class="course-blocks"><i></i><i></i><i></i></div></div></div>
+            <div class="project-body"><div class="project-meta"><span>05 / WEB DEVELOPMENT</span><span>HTML · CSS</span></div><h3>CourseKart</h3><p>A responsive learning landing page built to practice structure, rhythm, and visual clarity.</p><span class="project-arrow">View project <b>↗</b></span></div>
+          </article>
+        </div>
+        <div class="admin-published-block" data-published-projects-block hidden>
+          <div class="admin-published-heading"><span class="section-label">LOCAL UPLOADS</span><p>New work published from the admin control room.</p></div>
+          <div class="project-grid" data-published-projects></div>
+        </div>
+      </section>
+
+      <section class="story-section section-shell" id="story">
+        <div class="section-label reveal"><span>( 03 )</span><span>THE TRANSFORMATION</span></div>
+        <div class="story-heading reveal"><h2>Raw rows in.<br /><em>Real direction out.</em></h2><p>The part I enjoy most is the middle: turning a messy question into a clean, useful answer.</p></div>
+        <div class="transformation-board reveal reveal-delay-1">
+          <div class="raw-data-card"><div class="data-card-top"><span>01 / RAW INPUT</span><span>customer_data.csv</span></div><div class="data-table"><div class="data-row data-header"><span>customer_id</span><span>orders</span><span>segment</span></div><div class="data-row"><span>C-10482</span><span>08</span><span>repeat</span></div><div class="data-row"><span>C-10483</span><span class="data-warning">—</span><span>new</span></div><div class="data-row"><span>C-10484</span><span>13</span><span>repeat</span></div><div class="data-row"><span>C-10485</span><span>02</span><span>at_risk</span></div><div class="data-row"><span>C-10486</span><span>21</span><span>repeat</span></div></div><div class="data-card-foot"><span>12,480 rows</span><span>3 missing values</span></div></div>
+          <div class="transformation-steps"><div><span>clean</span><i>→</i></div><div><span>model</span><i>→</i></div><div><span>explain</span><i>→</i></div></div>
+          <div class="insight-output-card"><div class="data-card-top"><span>02 / OUTPUT</span><span>decision_view.pbix</span></div><div class="insight-score"><div class="insight-ring"><span>78<small>%</small></span></div><div><small>RETENTION SIGNAL</small><strong>Repeat customers<br /><em>are the growth lever.</em></strong></div></div><div class="insight-bars"><span><i style="--bar: 92%"></i><b>Repeat</b></span><span><i style="--bar: 61%"></i><b>New</b></span><span><i style="--bar: 34%"></i><b>At risk</b></span></div><div class="data-card-foot"><span>3 insights found</span><span class="insight-ready">ready to act ↗</span></div></div>
+        </div>
+      </section>
+
+      <section class="process-section section-shell" id="process">
+        <div class="section-label reveal"><span>( 03 )</span><span>HOW I SOLVE PROBLEMS</span></div>
+        <div class="process-heading">
+          <div class="reveal">
+            <h2>From a vague question<br /><em>to a clear next move.</em></h2>
+            <p class="process-intro">A good dashboard is not just a collection of charts. It is a decision tool: built around the question, the people using it, and the action the data should unlock.</p>
+          </div>
+          <span class="process-note reveal reveal-delay-1">MY ANALYST LOOP <b>↘</b></span>
+        </div>
+        <div class="process-grid">
+          <div class="process-steps">
+            <div class="process-step reveal"><span class="process-step-number">01</span><div><strong>Frame the question</strong><p>Clarify the goal, audience, constraints, and the decision hiding behind the request.</p></div><span class="process-step-arrow">↗</span></div>
+            <div class="process-step reveal reveal-delay-1"><span class="process-step-number">02</span><div><strong>Clean the signal</strong><p>Inspect missing values, duplicates, formats, outliers, and the shape of the data before trusting it.</p></div><span class="process-step-arrow">↗</span></div>
+            <div class="process-step reveal reveal-delay-2"><span class="process-step-number">03</span><div><strong>Find the pattern</strong><p>Use Python, SQL, and exploratory analysis to compare segments, trends, and performance drivers.</p></div><span class="process-step-arrow">↗</span></div>
+            <div class="process-step reveal reveal-delay-3"><span class="process-step-number">04</span><div><strong>Build the view</strong><p>Turn the important signals into an interactive dashboard with hierarchy, KPIs, filters, and context.</p></div><span class="process-step-arrow">↗</span></div>
+            <div class="process-step reveal reveal-delay-3"><span class="process-step-number">05</span><div><strong>Recommend the move</strong><p>Finish with the “so what?” — a concise insight, opportunity, risk, or action someone can use.</p></div><span class="process-step-arrow">↗</span></div>
+          </div>
+          <div class="process-demo reveal reveal-delay-1">
+            <div class="demo-label"><span>WHAT THE OUTPUT FEELS LIKE</span><span>POWER BI / INSIGHT VIEW</span></div>
+            <div class="dashboard-shell" data-dashboard>
+              <div class="dashboard-top"><span class="dashboard-logo"><i></i>decision<span>board</span></span><span class="dashboard-period">Last 12 months <b>⌄</b></span></div>
+              <div class="dashboard-controls" role="tablist" aria-label="Dashboard category filter"><button class="dashboard-filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">All</button><button class="dashboard-filter" type="button" data-filter="technology" role="tab" aria-selected="false">Technology</button><button class="dashboard-filter" type="button" data-filter="furniture" role="tab" aria-selected="false">Furniture</button><button class="dashboard-filter" type="button" data-filter="office" role="tab" aria-selected="false">Office</button></div>
+              <div class="dashboard-kpis"><div><small>Revenue</small><strong data-metric="revenue">₹ 1.24M</strong><em data-metric-change="revenue">↑ 24.8%</em></div><div><small>Profit margin</small><strong data-metric="margin">32.8%</strong><em data-metric-change="margin">↑ 8.4%</em></div><div><small>Repeat customers</small><strong data-metric="repeat">68.4%</strong><em data-metric-change="repeat">↑ 12.8%</em></div></div>
+              <div class="dashboard-main">
+                <div class="dashboard-trend"><div class="dashboard-title"><strong>Revenue movement</strong><span>Actual <i></i> Target <b></b></span></div><svg viewBox="0 0 460 160" role="img" aria-label="A rising revenue trend chart"><path class="chart-gridline" d="M0 25H460M0 70H460M0 115H460" /><path class="chart-fill" d="M0 130 C44 118 61 122 88 102 S127 115 154 81 S199 91 220 68 S263 77 286 45 S323 63 349 34 S391 47 420 20 S445 27 460 10 L460 160 L0 160Z" /><path class="chart-trend" d="M0 130 C44 118 61 122 88 102 S127 115 154 81 S199 91 220 68 S263 77 286 45 S323 63 349 34 S391 47 420 20 S445 27 460 10" /><circle cx="420" cy="20" r="5" /></svg><div class="dashboard-months"><span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span></div></div>
+                <div class="dashboard-side"><div class="dashboard-title"><strong>Sales mix</strong><span>by category</span></div><div class="dashboard-donut"><span>100<small>%</small></span></div><div class="dashboard-legend"><span><i class="legend-a"></i>Technology <b>42%</b></span><span><i class="legend-b"></i>Furniture <b>33%</b></span><span><i class="legend-c"></i>Office <b>25%</b></span></div></div>
+              </div>
+              <div class="dashboard-insight"><span>✦</span><div><small>KEY TAKEAWAY</small><strong>Technology is driving the growth curve.</strong></div><b>↗</b></div>
+            </div>
+            <div class="demo-caption"><span>KPI layer</span><span>Trend layer</span><span>Action layer</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="approach-section section-shell" id="approach">
+        <div class="section-label reveal"><span>( 04 )</span><span>THE APPROACH</span></div>
+        <div class="approach-grid">
+          <h2 class="reveal">From raw rows<br /><span>to real direction.</span></h2>
+          <div class="approach-list">
+            <div class="approach-item reveal reveal-delay-1"><span class="approach-number">01</span><div><h3>Clean the signal</h3><p>Reliable decisions start with data that is understood, structured, and ready to be trusted.</p></div><span class="approach-symbol">↘</span></div>
+            <div class="approach-item reveal reveal-delay-2"><span class="approach-number">02</span><div><h3>Find the why</h3><p>I use Python, SQL, and analysis to move past the obvious and surface the patterns worth acting on.</p></div><span class="approach-symbol">↘</span></div>
+            <div class="approach-item reveal reveal-delay-3"><span class="approach-number">03</span><div><h3>Make it click</h3><p>Dashboards should answer questions at a glance — with visual choices that help people move.</p></div><span class="approach-symbol">↘</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolkit-section" id="toolkit" data-dark-panel>
+        <div class="section-shell toolkit-inner">
+          <div class="section-label light-label reveal"><span>( 05 )</span><span>TOOLKIT</span></div>
+          <div class="toolkit-heading reveal"><h2>Built with logic.<br /><em>Finished with feeling.</em></h2><p>My toolkit moves from data wrangling to visual storytelling — with AI, automation, and a healthy dose of curiosity in between.</p></div>
+          <div class="toolkit-cloud reveal reveal-delay-1"><span class="accent-chip">Next.js</span><span class="accent-chip">Tailwind CSS</span><span>Framer Motion</span><span class="accent-chip">GSAP</span><span>Lenis</span><span>Three.js / React Three Fiber</span><span>Spline</span><span>Python</span><span>SQL</span><span>Power BI</span><span>Data Storytelling</span></div>
+        </div>
+      </section>
+
+      <section class="terminal-section" id="terminal" data-dark-panel>
+        <div class="section-shell terminal-inner">
+          <div class="section-label light-label reveal"><span>( 06 )</span><span>ANALYST TERMINAL</span></div>
+          <div class="terminal-heading reveal"><h2>Ask the data<br /><em>what it knows.</em></h2><p>Type <b>help</b> for a tiny interactive tour of the person behind the dashboards.</p></div>
+          <div class="terminal-window reveal reveal-delay-1">
+            <div class="terminal-chrome"><span><i></i><i></i><i></i></span><b>tanish@portfolio:~</b><em>online</em></div>
+            <div class="terminal-output" data-terminal-output aria-live="polite"></div>
+            <form class="terminal-form" data-terminal-form><span>&gt;</span><input data-terminal-input type="text" autocomplete="off" spellcheck="false" aria-label="Type a terminal command" placeholder="try: help" /><button type="submit">run</button></form>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-section section-shell" id="journey">
+        <div class="section-label reveal"><span>( 07 )</span><span>THE LEARNING JOURNEY</span></div>
+        <div class="journey-heading reveal"><h2>Still becoming.<br /><em>Always building.</em></h2><p>The path so far is less about collecting tools and more about learning how to use each one with intention.</p></div>
+        <div class="timeline" data-timeline>
+          <div class="timeline-rail"><i data-timeline-progress></i></div>
+          <div class="timeline-item reveal"><span class="timeline-year">2024</span><div class="timeline-dot"></div><div><strong>Started B.Com</strong><p>Built a foundation in business, commerce, and management at Bundelkhand University.</p></div><span class="timeline-tag">FOUNDATION</span></div>
+          <div class="timeline-item reveal reveal-delay-1"><span class="timeline-year">2024</span><div class="timeline-dot"></div><div><strong>Learned Excel</strong><p>Started thinking in tables, formulas, KPIs, and the small details that make data trustworthy.</p></div><span class="timeline-tag">FIRST TOOL</span></div>
+          <div class="timeline-item reveal reveal-delay-2"><span class="timeline-year">2025</span><div class="timeline-dot"></div><div><strong>Moved into SQL + Python</strong><p>Learned to query, clean, explore, and automate the work behind the final visual.</p></div><span class="timeline-tag">THE SHIFT</span></div>
+          <div class="timeline-item reveal reveal-delay-3"><span class="timeline-year">2025</span><div class="timeline-dot"></div><div><strong>Built with Power BI</strong><p>Turned analysis into interactive dashboards that help someone see the next move faster.</p></div><span class="timeline-tag">THE VIEW</span></div>
+          <div class="timeline-item reveal reveal-delay-3"><span class="timeline-year">2026</span><div class="timeline-dot"></div><div><strong>Built projects + earned credentials</strong><p>Combined analytics, AI exploration, and storytelling into a portfolio that keeps evolving.</p></div><span class="timeline-tag">NOW</span></div>
+          <div class="timeline-item timeline-item-last reveal reveal-delay-3"><span class="timeline-year">NEXT</span><div class="timeline-dot"></div><div><strong>Looking for opportunities</strong><p>Ready to contribute to a team that values thoughtful questions, useful dashboards, and learning in public.</p></div><span class="timeline-tag">OPEN</span></div>
+        </div>
+      </section>
+
+      <section class="certificates-section section-shell" id="certificates">
+        <div class="section-label reveal"><span>( 08 )</span><span>PROOF OF PRACTICE</span></div>
+        <div class="certificates-heading reveal">
+          <h2>Learning that<br /><em>shows up in the work.</em></h2>
+          <p>Certificates are part of the story. The more important part is how the learning becomes analysis, dashboards, and better decisions.</p>
+        </div>
+        <div class="certificates-grid">
+          <article class="certificate-card certificate-ibm reveal">
+            <div class="certificate-preview"><img src="assets/certificates/ibm-data-analyst.png" alt="IBM Data Analyst Professional Certificate for Tanish Raheja" width="700" height="494" loading="lazy" decoding="async" /><span class="preview-stamp">VERIFIED LEARNING</span></div>
+            <div class="certificate-body"><div class="certificate-meta"><span>IBM / COURSERA</span><span>2026</span></div><h3>IBM Data Analyst<br /><em>Professional Certificate</em></h3><p>11-course program covering Python, SQL, Excel, data visualization, dashboards, and the IBM Data Analyst capstone.</p><div class="certificate-links"><a href="assets/certificates/ibm-data-analyst.pdf" target="_blank" rel="noreferrer">Open PDF <span>↗</span></a><a href="https://www.coursera.org/account/accomplishments/professional-cert/FMDNMOBGQSYY" target="_blank" rel="noreferrer">Verify credential <span>↗</span></a></div></div>
+          </article>
+          <article class="certificate-card certificate-nielit reveal reveal-delay-1">
+            <div class="certificate-preview"><img src="assets/certificates/nielit-ccc-signed.png" alt="NIELIT Course on Computer Concepts certificate for Tanish Raheja" width="700" height="495" loading="lazy" decoding="async" /><span class="preview-stamp">NIELIT / SIGNED</span></div>
+            <div class="certificate-body"><div class="certificate-meta"><span>NIELIT</span><span>2025</span></div><h3>Course on Computer<br /><em>Concepts</em></h3><p>Official certificate for computer concepts, digital tools, and foundational technology fluency.</p><div class="certificate-links"><a href="assets/certificates/nielit-ccc-signed.pdf" target="_blank" rel="noreferrer">Open PDF <span>↗</span></a><a href="https://certificate.nielit.gov.in" target="_blank" rel="noreferrer">NIELIT portal <span>↗</span></a></div></div>
+          </article>
+          <article class="certificate-card certificate-skill reveal reveal-delay-2">
+            <div class="certificate-preview certificate-preview-rotated"><img src="assets/certificates/nielit-skill-competency.png" alt="NIELIT Certificate for Skill Competency for Tanish Raheja" width="700" height="495" loading="lazy" decoding="async" /><span class="preview-stamp">SKILL COMPETENCY</span></div>
+            <div class="certificate-body"><div class="certificate-meta"><span>NIELIT / NCVET</span><span>2025</span></div><h3>Computer Skill<br /><em>Competency</em></h3><p>Certificate for skill competency in the job role and foundational computer technology assessment.</p><div class="certificate-links"><a href="assets/certificates/nielit-skill-competency.pdf" target="_blank" rel="noreferrer">Open PDF <span>↗</span></a><a href="https://certificate.nielit.gov.in" target="_blank" rel="noreferrer">Verify portal <span>↗</span></a></div></div>
+           </article>
+         </div>
+         <div class="admin-published-block" data-published-certificates-block hidden>
+           <div class="admin-published-heading"><span class="section-label">LOCAL UPLOADS</span><p>New certificates published from the admin control room.</p></div>
+           <div class="certificates-grid" data-published-certificates></div>
+         </div>
+       </section>
+
+      <section class="credentials-section section-shell" id="credentials">
+        <div class="section-label reveal"><span>( 09 )</span><span>THE FOUNDATION</span></div>
+        <div class="credentials-grid">
+          <div class="credential-column reveal"><span class="column-kicker">CERTIFICATIONS</span><a class="credential-card" href="https://www.coursera.org/account/accomplishments/professional-cert/FMDNMOBGQSYY" target="_blank" rel="noreferrer"><span class="credential-icon">IBM</span><span><strong>IBM Data Analyst</strong><small>Professional Certificate · Coursera</small></span><b>↗</b></a><a class="credential-card" href="https://drive.google.com/drive/folders/1QJsTsVkM4OQVHdmDkaH8r9YUD698hkRb" target="_blank" rel="noreferrer"><span class="credential-icon nielit">A</span><span><strong>O Level Computer Certification</strong><small>NIELIT · Grade A</small></span><b>↗</b></a></div>
+          <div class="credential-column reveal reveal-delay-1"><span class="column-kicker">EDUCATION</span><div class="education-item"><span class="education-year">2024 — 2027</span><strong>Bachelor of Commerce</strong><small>Bundelkhand University, Jhansi</small><p>Business analytics · Commerce · Management</p></div><div class="education-item"><span class="education-year">2024</span><strong>Senior Secondary · Commerce</strong><small>Shri Vinayak Academy International Senior Secondary School</small><p>CBSE</p></div><div class="education-item"><span class="education-year">2022</span><strong>Secondary</strong><small>Shri Vinayak Academy International Senior Secondary School</small><p>CBSE</p></div></div>
+        </div>
+      </section>
+
+      <section class="contact-section section-shell" id="contact">
+        <div class="contact-card reveal">
+          <div class="contact-orb"></div>
+          <div class="section-label light-label"><span>( 10 )</span><span>NEXT CHAPTER</span></div>
+          <h2>Have a question<br /><em>worth exploring?</em></h2>
+          <p>I’m always open to conversations about analytics, creative technology, and the next problem worth solving.</p>
+          <a class="button button-light" href="mailto:rahejatanish29@gmail.com">Start a conversation <span>↗</span></a>
+          <div class="contact-email"><span>EMAIL</span><a href="mailto:rahejatanish29@gmail.com">rahejatanish29@gmail.com</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <div class="footer-top"><a class="brand" href="#top"><span class="brand-mark">TR</span><span class="brand-copy"><strong>Tanish Raheja</strong><small>Data × Digital</small></span></a><div class="footer-manifesto"><p>Making sense of data,<br /><em>one insight at a time.</em></p><div class="footer-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Motion</span></div></div><div class="footer-links"><a href="https://github.com/tanishraheja" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/tanishraheja" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:rahejatanish29@gmail.com">Email ↗</a></div></div>
+      <div class="footer-bottom"><span>© <span data-year>2026</span> Tanish Raheja</span><span>Designed & developed with curiosity</span><span class="footer-bottom-links"><a href="admin.html">Admin</a><a href="#top">Back to top ↑</a></span></div>
+    </footer>
+
+    <aside class="assistant-widget" data-assistant>
+      <button class="assistant-trigger" type="button" data-assistant-toggle aria-expanded="false"><span class="assistant-spark">✦</span><span>Ask Tanish AI</span><b>↗</b></button>
+      <div class="assistant-panel" data-assistant-panel>
+        <div class="assistant-panel-head"><div><span class="assistant-online"></span><strong>Tanish AI</strong><small>portfolio guide / online</small></div><button type="button" data-assistant-close aria-label="Close assistant">×</button></div>
+        <div class="assistant-messages" data-assistant-messages><div class="assistant-message assistant-bot">Hi — ask me about Tanish’s projects, tools, or learning journey.</div></div>
+        <div class="assistant-suggestions"><button type="button" data-ask="What projects has Tanish built?">Projects</button><button type="button" data-ask="What SQL skills does Tanish have?">SQL skills</button><button type="button" data-ask="How does Tanish solve problems?">Process</button></div>
+        <form class="assistant-form" data-assistant-form><input data-assistant-input type="text" placeholder="Ask something..." autocomplete="off" /><button type="submit" aria-label="Send question">↑</button></form>
+      </div>
+    </aside>
+
+    <nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation">
+      <a href="#main"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z" /></svg></span><span>Home</span></a>
+      <a href="#about"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20.8 8.7c0 5.2-8.8 10.2-8.8 10.2S3.2 13.9 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5Z" /></svg></span><span>About</span></a>
+      <a href="#work"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="10.8" cy="10.8" r="6.6" /><path d="m16 16 4.5 4.5" /></svg></span><span>Work</span></a>
+      <a href="#contact"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8" r="3.2" /><path d="M5.5 19c.8-3 3.1-4.7 6.5-4.7s5.7 1.7 6.5 4.7" /><circle cx="12" cy="12" r="9" /></svg></span><span>Contact</span></a>
+    </nav>
+  </body>
 </html>
