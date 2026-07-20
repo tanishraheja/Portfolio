@@ -560,3 +560,98 @@ body.dark-mode .certificate-links a:first-child:hover { color: #11131b; backgrou
   .mobile-menu a:not(.is-active) .mobile-nav-icon { color: rgba(255,255,255,.78); }
   .mobile-menu a.is-active .mobile-nav-icon { color: #fff; }
 }
+/* --- MOBILE RESPONSIVENESS FIX --- */
+@media (max-width: 768px) {
+  /* Header & Navigation */
+  .desktop-nav, .header-cta { 
+    display: none; 
+  }
+  .menu-toggle { 
+    display: block; 
+  }
+  .mobile-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--paper);
+    padding: 15px 0;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    z-index: 100;
+  }
+  .mobile-menu a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--ink-soft);
+  }
+  .mobile-nav-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .mobile-nav-icon svg {
+    fill: currentColor;
+  }
+
+  /* Hero Section */
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+    gap: 50px;
+    min-height: auto;
+  }
+  .hero-orbit { 
+    display: none; /* Hides oversized visual elements on small screens */
+  } 
+  .portrait-frame {
+    height: 400px; /* Adjusts image frame for mobile */
+  }
+
+  /* Convert Desktop Grids to Single Column */
+  .intro-grid, 
+  .process-grid, 
+  .approach-grid, 
+  .certificates-grid, 
+  .credentials-grid, 
+  .stat-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Project Cards */
+  .project-card-large, 
+  .project-card-tall, 
+  .project-card-wide, 
+  .project-card-small {
+    grid-column: span 12;
+  }
+  
+  /* Project Inner Visuals */
+  .dashboard-main,
+  .sales-grid { 
+    grid-template-columns: 1fr; 
+  }
+
+  /* Contact Section */
+  .contact-card { 
+    padding: 40px 30px; 
+  }
+  .contact-email {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
