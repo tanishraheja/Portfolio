@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 .nav-logo {
-    width: 40px;      /* Adjust size */
+    width: 400px;      /* Adjust size */
     height: 40px;
     object-fit: contain;
     display: block;
