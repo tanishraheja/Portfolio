@@ -28,6 +28,12 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+.nav-logo {
+    width: 40px;      /* Adjust size */
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
 body::before {
   content: "";
   position: fixed;
